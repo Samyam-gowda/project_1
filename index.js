@@ -29,7 +29,7 @@ app.get("/home" ,(req,res) => {
     res.render("home.ejs");
 });
  //register route
- app.get("/home/:register" ,(req,res) => {
+ app.get("/home/register" ,(req,res) => {
     res.render("register.ejs");
  });
 
@@ -51,6 +51,39 @@ app.post("/home", (req ,res) =>{
 
     res.redirect("/home");
 });
+
+//login route
+app.get("/home/login" , (req,res) => {
+    res.render("login.ejs");
+});
+
+// login route
+app.post("/temp", async (req, res) => {
+    let { username, password } = req.body;
+    try {
+      let details = await User.find({ username: username });
+      console.log("Details:", details);
+  
+      if (details.length > 0) {
+        let temp = details[0].username;
+        console.log("Retrieved username:", temp);
+  
+        if (temp === username) {
+          console.log("Username matches. Working.");
+          res.render("temp.ejs");
+        } else {
+          console.log("Username does not match. Not working.");
+          res.redirect("/home/login");
+        }
+      } else {
+        console.log("No user found. Not working.");
+        res.redirect("/home/login");
+      }
+    } catch (err) {
+      console.log("Error:", err);
+      res.redirect("/home/login");
+    }
+  });
 
 app.listen(8080,(req,res) => {
     console.log("lisiting on port 8080");
