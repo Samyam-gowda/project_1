@@ -25,8 +25,10 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/project_1');
 };
 let message = "";
+let globalName = "";
+
 app.get("/home" ,(req,res) => {
-    res.render("home.ejs");
+    res.render("home.ejs",{globalName});
 });
  //register route
  app.get("/home/register" ,(req,res) => {
@@ -67,12 +69,15 @@ app.post("/home", async (req, res) => {
       if (details.length > 0) {
         let temp = details[0].username;
         let temp2 = details[0].password;
+
         console.log("Retrieved username:", temp);
-  
+        
+        globalName = details[0].username;
+        console.log(globalName);
         if (temp === username && temp2 === password) {
           console.log("Username and password matches. Working.");
           message = "";
-          res.redirect("/home");
+          res.render("home.ejs",{globalName});
         } else {
           console.log("Username or password does not match. Not working.");
           message = "Username or password does not match! please try again";
