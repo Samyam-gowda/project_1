@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,6 +10,79 @@
     <form action="/temp" method="post">
         <p>ENTER THE USER NAME: <input type="text" name="username" placeholder="enter user name"></p>
         <p>ENTER THE PASSWORD: <input type="password" name="password" placeholder="enter your passsword"></p>
+        <button type="submit">LOGIN</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        hr {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+        }
+        form {
+            width: 50%;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button[type="submit"] {
+            width: 100%;
+            height: 40px;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        .login_err{
+            text-align: center;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2> welcome back </h2><hr>
+    <h3 class="login_err"> 
+        <% if(message.length > 0) { %>
+            <%= message %>
+        <% } %>
+    </h3>
+    <form action="/home" method="post">
+        <p>ENTER THE USER NAME: <input type="text" name="username" placeholder="enter user name"></p>
+        <p>ENTER THE PASSWORD: <input type="password" name="password" placeholder="enter your password"></p>
+      
         <button type="submit">LOGIN</button>
     </form>
 </body>
