@@ -24,7 +24,7 @@ main()
 async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/project_1');
 };
-
+let message = "";
 app.get("/home" ,(req,res) => {
     res.render("home.ejs");
 });
@@ -34,7 +34,7 @@ app.get("/home" ,(req,res) => {
  });
 
 //register route
-app.post("/home", (req ,res) =>{
+app.post("/home/reg", (req ,res) =>{
     let {username , email ,password} = req.body;
     let newUser = new User({
         username : username,
@@ -49,16 +49,16 @@ app.post("/home", (req ,res) =>{
         console.log(err);
     });
 
-    res.redirect("/home");
+    res.redirect("/home/login");
 });
 
 //login route
 app.get("/home/login" , (req,res) => {
-    res.render("login.ejs");
+    res.render("login.ejs",{message});
 });
 
 // login route
-app.post("/temp", async (req, res) => {
+app.post("/home", async (req, res) => {
     let { username, password } = req.body;
     try {
       let details = await User.find({ username: username });
@@ -66,13 +66,16 @@ app.post("/temp", async (req, res) => {
   
       if (details.length > 0) {
         let temp = details[0].username;
+        let temp2 = details[0].password;
         console.log("Retrieved username:", temp);
   
-        if (temp === username) {
-          console.log("Username matches. Working.");
-          res.render("temp.ejs");
+        if (temp === username && temp2 === password) {
+          console.log("Username and password matches. Working.");
+          message = "";
+          res.redirect("/home");
         } else {
-          console.log("Username does not match. Not working.");
+          console.log("Username or password does not match. Not working.");
+          message = "Username or password does not match! please try again";
           res.redirect("/home/login");
         }
       } else {
