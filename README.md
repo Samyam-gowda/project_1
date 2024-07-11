@@ -1,2 +1,2 @@
 # project_1
-this is a project on MERN stack
+this is a first project on MERN stack
