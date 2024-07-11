@@ -1,27 +1,26 @@
 const mongoose = require("mongoose");
-// const User = require("./models/user.js");
-const Product = require("./models/user.js");
+const { User, Product } = require("./models/user"); 
 
-// let userList = [{
-//     username : "samyam",
-//     email : "samyamgowda2003@gmail.com",
-//     password: "samyam@123"
-// },
-// {
-//     username : "sugam",
-//     email : "sugamgowda2003@gmail.com",
-//     password: "sugam@123"
+let userList = [{
+    username : "samyam",
+    email : "samyamgowda2003@gmail.com",
+    password: "samyam@123"
+},
+{
+    username : "sugam",
+    email : "sugamgowda2003@gmail.com",
+    password: "sugam@123"
 
-// },
-// {
-//     username : "Aras",
-//     email : "Arasgowda2003@gmail.com",
-//     password: "Aras@123"
-// }
-// ];
+},
+{
+    username : "Aras",
+    email : "Arasgowda2003@gmail.com",
+    password: "Aras@123"
+}
+];
 
 
-// User.insertMany(userList);
+User.insertMany(userList);
 
 let prodList = [
     {
@@ -29,14 +28,14 @@ let prodList = [
     price :50,
     location :'Bangalore',
     contact :89456123,
-    imglink :"public\\image\\temp.jpeg",
+    imglink :"temp.jpeg",
 },
 {
     prodname :'tomato',
     price :20,
     location :'Bangalore',
     contact :8945789626123,
-    imglink :"public\\image\\temp.jpeg",
+    imglink :"temp.jpeg",
 }
 
 ];

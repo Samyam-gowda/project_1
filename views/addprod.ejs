@@ -4,11 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>add product</title>
+    <style>
+        /* Add some basic styling to the form */
+        form {
+          max-width: 400px;
+          margin: 40px auto;
+          padding: 20px;
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Style the input fields */
+        input[type="text"], input[type="number"], input[type="file"] {
+          width: 100%;
+          height: 40px;
+          margin-bottom: 20px;
+          padding: 10px;
+          border: 1px solid #ccc;
+        }
+        
+        /* Style the submit button */
+        button[type="submit"] {
+          width: 100%;
+          height: 40px;
+          background-color: #4CAF50;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+        }
+        
+        /* Add some basic typography */
+        body {
+          font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+          font-size: 24px;
+          margin-bottom: 10px;
+        }
+      </style>
 </head>
 <body>
     <form action="/home/addprod" method="POST" enctype="multipart/form-data">
-        <input type="file" name="photo">
-        <button type="submit">Upload Photo</button>
+        ENTER PRODUCT NAME:<input type="text" name="prodname"><br>
+        ENTER PRODUCT PRICE:<input type="number" name="price"><br>
+        ENTER YOUR LOCATION:<input type="text" name="location" id=""><br>
+        ENTER YOUR CONTACT NUMBER:<input type="number" name="contact"><br>
+        INPUT PRODUCT PHOTOS: <input type="file" name="photo"><br>
+        <button type="submit">ADD PRODUCT</button>
       </form>
       
 </body>
