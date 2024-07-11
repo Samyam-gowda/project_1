@@ -4,4 +4,46 @@
 }
 .fa-square-plus{
     font-size: 100px;
+    align: center;
+}
+.buttons{
+    /* align-items: center; */
+   
+    display: flex;
+    justify-content: center;
+}
+.home_icon{
+    color: rgb(240, 240, 244);
+    /* font-size: 50px; */
+}
+.nav_element{
+    display: flex;
+}
+.account{
+    margin-right: 25px;
+}
+.navbar{
+    background-color: rgb(142, 130, 130);
+}
+.text{
+    margin: 20px;
+    margin-top: 0px;
+}
+button{
+    border: none;
+    background: none;
+}
+
+button:hover {
+    color: #023466; 
+    transform: scale(1.1);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid black 1px;
+    border-radius: 30px;
 }
