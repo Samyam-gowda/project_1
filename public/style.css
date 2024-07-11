@@ -29,12 +29,12 @@
     margin: 20px;
     margin-top: 0px;
 }
-button{
+.use_btn{
     border: none;
     background: none;
 }
 
-button:hover {
+.use_btn:hover {
     color: #023466; 
     transform: scale(1.1);
     transition: color 0.3s ease, transform 0.3s ease;
@@ -46,4 +46,9 @@ img{
     margin-right: auto;
     border: solid black 1px;
     border-radius: 30px;
+}
+
+.welcome{
+    display: flex;
+    justify-content: flex-end;
 }

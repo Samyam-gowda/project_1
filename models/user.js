@@ -16,6 +16,30 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+const prodSchema = new mongoose.Schema({
+    prodname :{
+        type: String,
+        required : true
+    },
+    price :{
+        type : Number,
+        required : true
+    },
+    location :{
+        type : String
+    },
+    contact :{
+        type :Number
+    },
+    imglink : {
+        type : String
+    }
+
+});
+
+const Product = mongoose.model("Product",prodSchema);
+module.exports = Product;
+
 const User = mongoose.model("User",userSchema);
 
-module.exports = User;
+// module.exports = User;
