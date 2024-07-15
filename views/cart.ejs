@@ -65,8 +65,10 @@
     </style>
 </head>
 <body>
-    <h1>AVILABLE PRODUCTS ARE</h1>
+    <h1>PRODUCTS in CART ARE</h1>
 <div class="contents">
+    <% let total = 0 %>
+
     <% for( let i = 0 ;i < allProducts.length ; i++) { %>
     <div class="products">
     <img src="\image\\<%=allProducts[i].imglink%>" alt="product image">
@@ -74,13 +76,13 @@
     <h3>PRICE:<%=allProducts[i].price%></h3><br>
     <h3>LOCATION:<%=allProducts[i].location%></h3><br>
     <h3>CONTACT DETAILS:<%=allProducts[i].contact%></h3><br>
-    <div class="cart">
-        <form action="/home/cart/<%=allProducts[i]._id%>" method="get">
-            <button type="submit"> ADD TO CART </button>
-        </form>
-    </div>
+    <% total = total + allProducts[i].price %>
+    <form action="/home/cart/delete/<%=allProducts[i]._id%>?_method=DELETE" method="post">
+        <button type="submit"> DELETE</button>
+    </form>
     </div>
     <% } %>
 </div>
+<h2>TOTAL BILLING AMOUNT :<%= total %></h2>
 </body>
 </html>

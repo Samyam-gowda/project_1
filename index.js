@@ -119,7 +119,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
-const { User, Product } = require("./models/user"); 
+const { User, Product,Cart } = require("./models/user"); 
 const methodOverride = require("method-override");
 const multer = require("multer");
 
@@ -247,7 +247,7 @@ app.post("/home/addprod", upload.single('photo'), (req, res) => {
 app.get("/home/buyprod", async (req, res) => {
   try {
     let allProducts = await Product.find({});
-    console.log(allProducts);
+    // console.log(allProducts);
     res.render("buyprod.ejs", { allProducts });
   } catch (err) {
     console.log(err);
@@ -255,6 +255,56 @@ app.get("/home/buyprod", async (req, res) => {
   }
 });
 
+// add to cart route
+app.get("/home/cart/:id", async (req, res) => {
+  let { id } = req.params;
+  let item = await Product.findById(id);
+  try {
+    // console.log(id);
+    // console.log(item._id);
+    let cartItem = await new Cart({
+      prodname : item.prodname,
+      price :item.price,
+      location : item.location,
+      contact : item.contact,
+      imglink : item.imglink
+    });
+    cartItem.save()
+    .then((res) => {
+      console.log("added to cart");
+    }).catch((err) =>{
+      console.log(err);
+    });
+    res.redirect("/home");
+  } catch (error) {
+    console.log(error);
+  };
+});
+
+//view cart route
+app.get("/home/cart", async (req, res) => {
+  try {
+    let allProducts = await Cart.find({});
+    // console.log(allProducts);
+    res.render("cart.ejs", { allProducts });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Error retrieving products");
+  }
+});
+
+//deleting item in cart
+app.delete("/home/cart/delete/:id",async(req,res) =>{
+  let { id } = req.params;
+  // console.log(id);
+  await Cart.findByIdAndDelete(id)
+  .then((res) => {
+    console.log("deleted from cart");
+  }).catch((err) => {
+    console.log(err);
+  })
+  res.redirect("/home/cart");
+});
 
 app.listen(8080, (req, res) => {
   console.log("Listening on port 8080");
