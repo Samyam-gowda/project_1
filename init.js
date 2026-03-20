@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./models/user.js");
+const { User, Product } = require("./models/user"); 
 
 let userList = [{
     username : "samyam",
@@ -19,8 +19,27 @@ let userList = [{
 }
 ];
 
+
 User.insertMany(userList);
 
+let prodList = [
+    {
+    prodname :'potato',
+    price :50,
+    location :'Bangalore',
+    contact :89456123,
+    imglink :"temp.jpeg",
+},
+{
+    prodname :'tomato',
+    price :20,
+    location :'Bangalore',
+    contact :8945789626123,
+    imglink :"temp.jpeg",
+}
+
+];
+Product.insertMany(prodList);
 
 main()
 .then((res) => {
